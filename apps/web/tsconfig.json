@@ -7,7 +7,13 @@
       // "@my/ui": ["../../packages/ui/src"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "main.tsx"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "main.tsx",
+    "vite.config.ts",
+    "vitest.config.ts"
+  ]
 }
 
 // {
