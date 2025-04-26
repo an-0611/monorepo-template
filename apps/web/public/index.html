@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <!-- 主渲染點 -->
+    <div id="root"></div>
+    <!-- https://cn.vite.dev/guide/backend-integration -->
+    <!-- 在开发环境中，在服务器的 HTML 模板中注入以下内容（用正在运行的本地 URL 替换 http://localhost:5173）： -->
+    <!-- 如果你正使用 @vitejs/plugin-react 配合 React，你还需要在上述脚本前添加下面这个，
+     因为插件不能修改你正在服务的 HTML（请将 http://localhost:5173 替换为 Vite 正在运行的本地 URL）： -->
+    <!-- 在 開發環境 中，這段程式碼確保了 React Fast Refresh 功能能夠正常工作。 -->
+    <script type="module">
+      // 這行代碼會載入 React Fast Refresh 的運行時（runtime）。它會向頁面注入必要的 JavaScript 代碼，來支持 React 元件的快速熱更新。
+      import RefreshRuntime from "http://localhost:5173/@react-refresh";
+      // 這行代碼將 React Fast Refresh 的運行時注入到全局的 window 物件中。這樣，React 可以在需要時訪問這些功能。
+      RefreshRuntime.injectIntoGlobalHook(window);
+      // 這兩個函數是 Fast Refresh 使用的標誌，用來標識需要刷新或保留狀態的 React 元件。它們的作用是讓 Fast Refresh 能夠準確地識別哪些元件已經變化，並且只重新渲染那些發生變化的元件，而不是整個應用。
+      window.$RefreshReg$ = () => {};
+      window.$RefreshSig$ = () => (type) => type;
+      // 這行代碼告訴 Vite 插件這個腳本已經被加載，並且 React Fast Refresh 準備好在應用中運行。
+      window.__vite_plugin_react_preamble_installed__ = true;
+    </script>
+
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

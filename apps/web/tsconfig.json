@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": "./src", // 如果需要調整 baseUrl，可以在這裡設定
+    "paths": {
+      "@/*": ["src/*"] // 根據需要設定 path 別名
+      // "@my/ui": ["../../packages/ui/src"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "main.tsx"]
+}
+
+// {
+//   "compilerOptions": {
+//     "target": "ESNext",
+//     "module": "ESNext",
+//     "moduleResolution": "node",
+//     "strict": true,
+//     "jsx": "react-jsx",
+//     "esModuleInterop": true,
+//     "skipLibCheck": true,
+//     "forceConsistentCasingInFileNames": true
+//   },
+//   "include": ["src/**/*.ts", "src/**/*.tsx"]
+// }

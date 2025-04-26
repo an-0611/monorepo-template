@@ -1,0 +1,16 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+# 作用：用來告訴 pnpm：
+# 1. 哪些資料夾屬於同一個 Workspace（工作區）
+# 2. 工作區之間如何互相解析依賴
+# 3.（可選）針對整個 Workspace 的全域設定
+# 換句話說：沒有 pnpm-workspace.yaml，pnpm 就無從辨識「哪些子專案要一起管理」，就退化成單一 repo 的行為。
+
+# 功能	說明
+# 共用 node_modules    => store	Workspace 內所有子包共用全域快取 (~/.local/share/pnpm/store)，安裝更快、省空間。
+# workspace:* 版本範圍  =>	在子包 package.json 內："@my/ui": "workspace:*" → pnpm 會優先連結當地 packages 資料夾，而不是去 npm Registry 下載。
+# 跨包開發熱更新         =>	修改 packages/ui 的程式碼，apps/web 透過硬連結立刻看到變動，無需發佈或重裝。
+# 集中指令	            => pnpm -r build (recursive) / pnpm --filter web dev / pnpm -r exec jest… 讓你一次對多包執行 script。
+# 鎖檔一致性	          => 整個 monorepo 只有 一份 pnpm-lock.yaml，確保所有子包依賴樹同步。
+# Hoisting 控制        =>	透過 node-linker、hoist-pattern 等 workspace 級設定，決定要不要扁平化 node_modules。

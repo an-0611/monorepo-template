@@ -1,0 +1,25 @@
+{
+  "name": "my-monorepo",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter ./apps/web dev",
+    "build": "pnpm -r --filter ./apps/* run build",
+    "lint": "eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
+    "test": "vitest run",
+    "preinstall": "npx only-allow pnpm"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19",
+    "@commitlint/config-conventional": "^19",
+    "@types/node": "^20",
+    "eslint": "^9",
+    "eslint-config-prettier": "^9",
+    "eslint-plugin-react": "^7",
+    "eslint-plugin-react-hooks": "^4",
+    "husky": "^9",
+    "lint-staged": "^15",
+    "prettier": "^3",
+    "typescript": "^5",
+    "vitest": "^1"
+  }
+}
